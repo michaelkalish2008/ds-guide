@@ -16,20 +16,25 @@ class TestQualityGenerator:
     
     @pytest.fixture
     def generator(self, temp_db):
-        """Create generator instance with temp database"""
+        """Create generator instance with shared test database"""
         return QualityGenerator(temp_db)
     
     def test_quality_test_creation(self, generator):
         """Test quality test data creation"""
         test_date = datetime(2024, 1, 15)
         lot_count = 1
-        
-        generator.populate_data(test_date, lot_count)
-        
+        # Create a lot in lot_master for the test date
         cursor = generator.conn.cursor()
+        lot_uuid = "test-lot-uuid"
+        cursor.execute("""
+            INSERT INTO lot_master (lot_uuid, lot_number, lot_date, product_code, facility_code, batch_size_kg, status)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """, (lot_uuid, f"TAL-{test_date.strftime('%Y-%m-%d')}", test_date.strftime('%Y-%m-%d'), "TALEGGIO", "FAC001", 50.0, "ACTIVE"))
+        generator.conn.commit()
+        # Now run the quality generator
+        generator.populate_data(test_date, lot_count)
         cursor.execute("SELECT COUNT(*) FROM quality_tests")
         count = cursor.fetchone()[0]
-        
         assert count > 0
     
     def test_ph_range_validation(self, generator):

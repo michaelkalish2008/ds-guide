@@ -87,6 +87,10 @@ class ManufacturingGenerator:
         curd_processing_records = self.generate_curd_processing_records(manufacturing_batches)
         self.insert_curd_processing_records(curd_processing_records)
         
+        # NEW: Generate and insert pressing records
+        pressing_records = self.generate_pressing_records(manufacturing_batches)
+        self.insert_pressing_records(pressing_records)
+        
         # Generate simple manufacturing batches for testing
         batches_data = []
         for lot in lots:
