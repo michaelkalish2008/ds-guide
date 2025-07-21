@@ -69,3 +69,13 @@ coverage.xml
 
 # Node modules (if any JS/TS)
 node_modules/
+
+# Add this to your existing .gitignore
+# Database files
+data/database/*.db
+data/database/backups/
+data/database/*.sqlite
+data/database/*.sqlite3
+
+# Keep the directory structure
+!data/database/.gitkeep

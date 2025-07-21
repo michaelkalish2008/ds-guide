@@ -1,0 +1,66 @@
+# Synthetic Data Generation Configuration
+# Cheese Manufacturing Database
+
+database:
+  path: "data/database/cheese_manufacturing.db"  # Updated path
+  backup_before_generation: true
+  backup_path: "data/database/backups/"
+
+generation:
+  # Core Architecture (Schema 01)
+  core:
+    lot_count: 100
+    date_range_days: 90
+    product_codes: ["TALEGGIO", "GORGONZOLA", "MASCARPONE"]
+    facility_codes: ["FAC-001", "FAC-002"]
+
+  # Raw Materials & Suppliers (Schema 02)
+  raw_materials:
+    supplier_count: 25
+    raw_lot_count: 50
+    milk_test_count: 30
+    ingredient_test_count: 40
+    supplier_types:
+      - "DAIRY_FARM"
+      - "INGREDIENT"
+      - "PACKAGING"
+
+  # Preprocessing Operations (Schema 03)
+  preprocessing:
+    batch_count: 80
+    pasteurization_records_per_batch: 5
+    standardization_records_per_batch: 3
+    process_types:
+      - "PASTEURIZATION"
+      - "STANDARDIZATION"
+      - "SEPARATION"
+
+  # Manufacturing Process (Schema 04)
+  manufacturing:
+    batch_count: 100
+    coagulation_records_per_batch: 1
+    curd_records_per_batch: 1
+    pressing_records_per_batch: 1
+    cheese_types:
+      - "TALEGGIO"
+      - "GORGONZOLA"
+      - "MASCARPONE"
+
+  # Aging & Maturation (Schema 05)
+  aging:
+    cave_count: 3
+    environmental_readings_per_cave_per_day: 24
+    activities_per_lot: 10
+    cave_types:
+      - "NATURAL"
+      - "CONTROLLED"
+      - "SURFACE_RIPENING"
+
+  # Quality Control & Testing (Schema 06)
+  quality:
+    test_methods_count: 15
+    tests_per_lot: 5
+    composition_tests_per_lot: 1
+    microbiology_tests_per_lot: 2
+    test_categories:
+      - "COMPOSITI 

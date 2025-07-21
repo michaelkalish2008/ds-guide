@@ -1,5 +1,68 @@
 # ds-guide
-The Data Science (DS) Guide is here to help you learn and apply DS concepts and tools.
+The Data Science (DS) Guide is here to help you learn and apply DS concepts and tools. If you are using Cursor, you can ask questions in your side bar (use **command l** shortcut).
+
+## Structure
+
+1. We'll kick off with creating a virtual environment (alias venv) for installing all of the packages we'll need. We'll be running the following command to install the packages listed in requirements.txt
+```bash
+# pip install -r requirements.txt
+```
+2. The .env file is our "hidden" file containing our API keys. These are to be kept secret and not stored in Github. Go to OpenAI, LangSmith, Supabase, etc. to get your keys!
+3. Configurations and settings apply generally to the repo and so will be stored in config.yaml and settings.py.
+4. .gitignore (another "hidden" file) ensures that certain files are not uploaded to Github.
+5. This repo follows the convention of locating code in a source (src) directory.
+
+Below is layout of the repo:
+
+├── src/
+│   ├── platforms-tools/
+│   ├── languages-commands/
+│   ├── packages/
+│   ├── file-types/
+│   ├── statistics/
+│   ├── genai-nlp/
+│   ├── machine-learning/
+│   └── graphs/
+├── venv/                    # Virtual environment (created during setup)
+├── requirements.txt         # Python dependencies
+├── .env                     # Environment variables and secrets
+├── config.yaml              # Configuration settings
+├── settings.py              # Python settings and constants
+├── .gitignore              # Git ignore file
+└── README.md               # This file - your setup and overview guide
+
+## Overview of sections
+
+- **Platforms & Tools**: IDEs, databases, messaging systems, repositories, and dependency management
+- **Languages & Commands**: Programming languages, text processing, queries, and web technologies
+- **Packages**: Essential libraries for data science, ML, visualization, and analysis
+- **File Types**: Understanding various data formats, code files, and configuration files
+
+### Statistics
+- Statistical schools of thought (Frequentist vs Bayesian)
+- Complexity analysis and computational considerations
+- Simulation methods (Markov chains, Monte Carlo)
+- Probability distributions and their applications
+- Statistical testing and experimental design
+- Key statistical concepts and terminology
+
+### Generative AI & NLP
+- Transformer architecture fundamentals
+- Neural network concepts (attention, embeddings, encodings)
+- Natural language processing techniques
+- Retrieval and similarity methods
+
+### Machine Learning
+- Model types and architectures
+- Performance metrics and evaluation
+- Model explainability and interpretability
+- Training methodologies and best practices
+- Data preprocessing and feature engineering
+
+### Graph Theory
+- Centrality measures and network analysis
+- Graph features and community detection
+- Network visualization and analysis techniques
 
 ## Getting Started
 
@@ -147,7 +210,7 @@ brew install python
 
 #### 5. Set Up Your Project Environment
 
-Once Python is installed, create a virtual environment for this project:
+Once Python is installed, create a virtual environment for this project. For ference, we are using this guidance: https://docs.python.org/3.12/tutorial/venv.html 
 
 ```bash
 # Navigate to your project directory
@@ -207,61 +270,3 @@ python -c "import pandas as pd; import numpy as np; print('Setup successful!')"
 - Make sure you have write permissions in the directory
 - Try creating the venv in a different location
 - Check if your Python installation includes venv module
-
-# Structure
-
-Below is the general structure of the repo. 
-```
-├── src/
-│   ├── platforms-tools/
-│   ├── languages-commands/
-│   ├── packages/
-│   ├── file-types/
-│   ├── statistics/
-│   ├── genai-nlp/
-│   └──machine-learning/
-├── graphs/
-├── venv/                    # Virtual environment (created during setup)
-├── requirements.txt         # Python dependencies
-├── .env                     # Environment variables and secrets
-├── config.yaml              # Configuration settings
-├── settings.py              # Python settings and constants
-├── .gitignore              # Git ignore file
-└── README.md               # This file - your setup and overview guide
-```
-
-## Overview
-
-This guide covers the essential fundamentals for data science, including:
-
-### Fundamentals
-- **Platforms & Tools**: IDEs, databases, messaging systems, repositories, and dependency management
-- **Languages & Commands**: Programming languages, text processing, queries, and web technologies
-- **Packages**: Essential libraries for data science, ML, visualization, and analysis
-- **File Types**: Understanding various data formats, code files, and configuration files
-
-### Statistics
-- Statistical schools of thought (Frequentist vs Bayesian)
-- Complexity analysis and computational considerations
-- Simulation methods (Markov chains, Monte Carlo)
-- Probability distributions and their applications
-- Statistical testing and experimental design
-- Key statistical concepts and terminology
-
-### Generative AI & NLP
-- Transformer architecture fundamentals
-- Neural network concepts (attention, embeddings, encodings)
-- Natural language processing techniques
-- Retrieval and similarity methods
-
-### Machine Learning
-- Model types and architectures
-- Performance metrics and evaluation
-- Model explainability and interpretability
-- Training methodologies and best practices
-- Data preprocessing and feature engineering
-
-### Graph Theory
-- Centrality measures and network analysis
-- Graph features and community detection
-- Network visualization and analysis techniques
