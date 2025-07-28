@@ -9,30 +9,30 @@ This document outlines the structure and organization of the data science curric
 src/lessons/
 ├── data/                    # Shared lesson data files
 ├── ftypes.ipynb            # Existing lesson notebook
-├── lesson_01_terminal_environment/
+├── terminal/
 │   ├── data/               # Lesson-specific data files
 │   ├── sql/                # SQL scripts and queries
-│   └── terminal_environment.md
-├── lesson_02_sql_data_extraction/
+│   └── terminal.md
+├── sql/
 │   ├── data/               # Lesson-specific data files
 │   ├── sql/                # SQL scripts and queries
-│   └── sql_data_extraction.md
-├── lesson_03_pandas_mastery/
+│   └── sql.md
+├── pandas/
 │   ├── data/               # Lesson-specific data files
 │   ├── sql/                # SQL scripts and queries
-│   └── pandas_mastery.md
-├── lesson_04_ml_pipeline/
+│   └── pandas.md
+├── ml/
 │   ├── data/               # Lesson-specific data files
 │   ├── sql/                # SQL scripts and queries
-│   └── ml_pipeline.md
-├── lesson_05_nlp_applications/
+│   └── ml.md
+├── nlp/
 │   ├── data/               # Lesson-specific data files
 │   ├── sql/                # SQL scripts and queries
-│   └── nlp_applications.md
-├── lesson_06_langchain_ai_workflows/
+│   └── nlp.md
+├── langchain/
 │   ├── data/               # Lesson-specific data files
 │   ├── sql/                # SQL scripts and queries
-│   └── langchain_ai_workflows.md
+│   └── langchain.md
 ├── LESSON_STRUCTURE.md     # This file
 └── MASTER_CURRICULUM_OUTLINE.md
 ```
@@ -88,27 +88,27 @@ Each lesson follows a consistent format:
 
 ### **Skill Building Path**
 
-1. **Lesson 1**: Terminal & Environment Setup
+1. **Terminal**: Terminal & Environment Setup
    - Foundation for all subsequent work
    - Environment management and version control
 
-2. **Lesson 2**: SQL for Data Extraction
+2. **SQL**: SQL for Data Extraction
    - Data access and querying fundamentals
    - Integration with pandas workflows
 
-3. **Lesson 3**: Pandas Mastery
+3. **Pandas**: Pandas Mastery
    - Comprehensive data manipulation
    - Performance optimization and time series analysis
 
-4. **Lesson 4**: ML Pipeline - Development to Deployment
+4. **ML**: ML Pipeline - Development to Deployment
    - End-to-end machine learning workflows
    - Production deployment and monitoring
 
-5. **Lesson 5**: NLP Applications
+5. **NLP**: NLP Applications
    - Text processing, regex, topic modeling
    - Sentiment analysis and document classification
 
-6. **Lesson 6**: LangChain AI Workflows
+6. **LangChain**: LangChain AI Workflows
    - Modern AI-powered analytics
    - RAG systems, LangGraph, LangSmith, MCP
 

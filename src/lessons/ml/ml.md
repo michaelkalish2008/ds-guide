@@ -7,7 +7,7 @@ End-to-end machine learning pipeline: from feature engineering to production dep
 ## Summary
 This comprehensive lesson covers the complete machine learning pipeline from feature engineering through production deployment using the cheese manufacturing database. Students will work with the `quality_tests` table (~155 records), `aging_lots` table (~5K records), `environmental_monitoring` table (~67K records), and other datasets to build production-ready ML systems.
 
-The lesson covers advanced feature engineering, model development, comprehensive evaluation, deployment strategies, and production workflows. Students will learn to create sophisticated features, implement advanced algorithms, evaluate models thoroughly, and deploy them to production environments. This foundation is essential for building robust, scalable machine learning systems.
+The lesson covers advanced feature engineering, comprehensive model development including neural networks, random forest, XGBoost, logistic regression, linear regression, and multinomial naive Bayes, thorough evaluation, deployment strategies, and production workflows. Students will learn to create sophisticated features, implement diverse algorithms, evaluate models thoroughly, and deploy them to production environments. This foundation is essential for building robust, scalable machine learning systems.
 
 ## Objectives
 By the end of this lesson, students will be able to:
@@ -18,11 +18,13 @@ By the end of this lesson, students will be able to:
 - Handle high-dimensional and sparse data
 - Implement automated feature selection
 
-### **Model Development**
-- Implement gradient boosting algorithms
-- Use support vector machines and neural networks
-- Apply ensemble methods and stacking
-- Optimize hyperparameters effectively
+### **Comprehensive Model Development**
+- Implement neural networks for complex patterns
+- Use random forest for robust classification and regression
+- Apply XGBoost for gradient boosting optimization
+- Implement logistic regression for binary classification
+- Use linear regression for continuous predictions
+- Apply multinomial naive Bayes for text classification
 
 ### **Comprehensive Model Evaluation**
 - Implement comprehensive model evaluation frameworks
@@ -84,25 +86,31 @@ By the end of this lesson, students will be able to:
 - Apply dimensionality reduction techniques
 - Create automated feature pipelines
 
-### **Part 2: Advanced Model Development (90 minutes)**
+### **Part 2: Comprehensive Model Development (90 minutes)**
 
-#### **2.1 Gradient Boosting**
-- Implement XGBoost and LightGBM
-- Optimize gradient boosting parameters
-- Handle categorical variables in boosting
-- Interpret gradient boosting models
+#### **2.1 Neural Networks**
+- Implement feedforward neural networks
+- Use convolutional neural networks for structured data
+- Apply recurrent neural networks for time series
+- Optimize neural network architectures and hyperparameters
 
-#### **2.2 Support Vector Machines**
-- Apply SVM for classification and regression
-- Optimize SVM hyperparameters
-- Handle non-linear relationships
-- Use SVM for high-dimensional data
+#### **2.2 Ensemble Methods**
+- Implement random forest for classification and regression
+- Use bagging and boosting techniques
+- Apply stacking and blending methods
+- Optimize ensemble performance and interpretability
 
-#### **2.3 Ensemble Methods**
-- Implement random forests and bagging
-- Use stacking and blending techniques
-- Apply voting classifiers and regressors
-- Optimize ensemble performance
+#### **2.3 Gradient Boosting**
+- Implement XGBoost for advanced gradient boosting
+- Use LightGBM for efficient boosting
+- Apply CatBoost for categorical variables
+- Optimize gradient boosting parameters and performance
+
+#### **2.4 Linear Models**
+- Implement logistic regression for binary classification
+- Use linear regression for continuous predictions
+- Apply multinomial naive Bayes for text classification
+- Handle regularization and feature scaling
 
 ### **Part 3: Model Evaluation and Deployment (90 minutes)**
 
@@ -126,41 +134,41 @@ By the end of this lesson, students will be able to:
 
 ## Exercises
 
-### **Exercise 1: Quality Prediction Pipeline**
+### **Exercise 1: Quality Prediction with Multiple Algorithms**
 1. Engineer features from quality test data
-2. Build classification models for quality prediction
-3. Implement comprehensive model evaluation
-4. Deploy quality prediction model to production
+2. Implement neural networks, random forest, XGBoost, and logistic regression
+3. Compare model performance and interpretability
+4. Deploy best-performing model to production
 
-### **Exercise 2: Process Optimization**
+### **Exercise 2: Yield Optimization with Regression Models**
 1. Create features from manufacturing process data
-2. Build regression models for yield optimization
-3. Implement hyperparameter tuning
-4. Develop process optimization pipeline
+2. Build linear regression, random forest, and XGBoost models
+3. Implement hyperparameter tuning for all algorithms
+4. Develop yield optimization pipeline
 
-### **Exercise 3: Environmental Impact Analysis**
+### **Exercise 3: Text Classification with Naive Bayes**
+1. Engineer text features from quality reports
+2. Implement multinomial naive Bayes for document classification
+3. Compare with neural network text classifiers
+4. Create automated document classification system
+
+### **Exercise 4: Time Series Prediction with Neural Networks**
 1. Engineer time-series features from environmental data
-2. Build models to predict environmental impact on quality
-3. Implement advanced feature engineering
-4. Create environmental impact prediction pipeline
+2. Build recurrent neural networks for time series prediction
+3. Compare with traditional time series models
+4. Deploy time series prediction system
 
-### **Exercise 4: Predictive Maintenance**
-1. Create features from sensor and equipment data
-2. Build models to predict equipment failures
-3. Implement time-series validation
-4. Deploy predictive maintenance system
-
-### **Exercise 5: End-to-End ML Pipeline**
-1. Build complete ML pipeline from data to deployment
-2. Implement automated feature engineering
-3. Create model training and evaluation workflow
+### **Exercise 5: Comprehensive ML Pipeline**
+1. Build complete ML pipeline with all algorithm types
+2. Implement automated model selection and evaluation
+3. Create model comparison and ensemble methods
 4. Deploy production-ready ML system
 
 ## Assessment
 
 ### **Knowledge Checkpoints**
 - [ ] Engineer advanced features from complex data
-- [ ] Implement advanced machine learning algorithms
+- [ ] Implement neural networks, random forest, XGBoost, and linear models
 - [ ] Build comprehensive model evaluation frameworks
 - [ ] Deploy models to production environments
 - [ ] Create automated ML workflows
@@ -168,8 +176,8 @@ By the end of this lesson, students will be able to:
 
 ### **Success Criteria**
 - Advanced feature engineering expertise
-- Machine learning algorithm proficiency
-- Comprehensive evaluation capabilities
+- Comprehensive machine learning algorithm proficiency
+- Model evaluation and comparison capabilities
 - Deployment strategy implementation
 - Production workflow development
 - End-to-end pipeline creation
@@ -177,7 +185,7 @@ By the end of this lesson, students will be able to:
 ## Next Steps
 
 This lesson provides comprehensive ML pipeline expertise. Students should be comfortable with:
-- Advanced feature engineering and model development
+- Advanced feature engineering and diverse model development
 - Comprehensive model evaluation and validation
 - Production deployment and monitoring
 - Automated ML workflow creation

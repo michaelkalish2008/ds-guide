@@ -107,42 +107,42 @@ By the end of this curriculum, students will be able to:
 
 ## Outline
 
-### **Lesson 1: Terminal & Environment Setup**
+### **Terminal: Terminal & Environment Setup**
 - **Topic**: Command line mastery, Git workflows, virtual environments
 - **Summary**: Establish development environment, master command line operations, set up version control
 - **Objectives**: Terminal navigation, Git workflows, virtual environment management, package management
 - **Common DS Applications**: Environment reproducibility, version control, dependency management
 - **Outline**: Command line basics, Git fundamentals, virtual environment setup, package management
 
-### **Lesson 2: SQL for Data Extraction**
+### **SQL: SQL for Data Extraction**
 - **Topic**: Database querying and complex data extraction
 - **Summary**: Query cheese manufacturing database, perform complex joins across production tables, integrate SQL with pandas
 - **Objectives**: SQL proficiency, complex querying, data extraction, SQL-to-pandas workflows
 - **Common DS Applications**: Data extraction, reporting, relationship analysis
 - **Outline**: SQL basics, complex joins, aggregations, SQL-to-pandas integration
 
-### **Lesson 3: Pandas Mastery**
+### **Pandas: Pandas Mastery**
 - **Topic**: Comprehensive pandas mastery: data manipulation, complex operations, and time series analysis
 - **Summary**: Master all aspects of pandas including data manipulation, complex operations, performance optimization, and time series analysis
 - **Objectives**: Advanced pandas operations, complex transformations, time series analysis, performance optimization
 - **Common DS Applications**: Data engineering, manufacturing analytics, time series analytics, performance analytics
 - **Outline**: Advanced data manipulation, complex operations, time series analysis, performance optimization
 
-### **Lesson 4: ML Pipeline - Development to Deployment**
+### **ML: ML Pipeline - Development to Deployment**
 - **Topic**: End-to-end machine learning pipeline: from feature engineering to production deployment
 - **Summary**: Build complete machine learning pipelines including feature engineering, model development, evaluation, and deployment
 - **Objectives**: Advanced feature engineering, model development, comprehensive evaluation, production deployment
 - **Common DS Applications**: Quality prediction, process optimization, predictive maintenance, yield optimization
 - **Outline**: Advanced feature engineering, model development, evaluation and deployment, production workflows
 
-### **Lesson 5: NLP Applications - Text Processing to Advanced Analysis**
+### **NLP: NLP Applications - Text Processing to Advanced Analysis**
 - **Topic**: Comprehensive NLP applications: text processing, regex, topic modeling, sentiment analysis, and document classification
 - **Summary**: Master all aspects of NLP including text preprocessing, regex patterns, topic modeling, sentiment analysis, and document classification
 - **Objectives**: Text processing and regex, topic modeling, sentiment analysis, document classification
 - **Common DS Applications**: Quality report analysis, customer feedback analysis, regulatory documentation, manufacturing documentation
 - **Outline**: Text processing and regex, topic modeling and analysis, sentiment analysis and classification
 
-### **Lesson 6: LangChain AI Workflows - From RAG to Multi-Agent Systems**
+### **LangChain: LangChain AI Workflows - From RAG to Multi-Agent Systems**
 - **Topic**: Comprehensive AI workflows: RAG systems, LangGraph, LangSmith, vector databases, tools, MCP, and multi-agent systems
 - **Summary**: Implement modern AI workflows using LangChain ecosystem including RAG systems, LangGraph, LangSmith, vector databases, custom tools, MCP, and multi-agent systems
 - **Objectives**: RAG systems and vector databases, LangGraph workflow orchestration, LangSmith monitoring, custom tools and MCP
@@ -179,16 +179,16 @@ By the end of this curriculum, students will be able to:
 ## Assessment Framework
 
 ### **Knowledge Checkpoints**
-- **Lesson 2**: SQL querying and data extraction proficiency
-- **Lesson 3**: Comprehensive pandas operations and time series analysis
-- **Lesson 4**: Machine learning pipeline development and deployment
-- **Lesson 5**: Advanced NLP applications and text analysis
-- **Lesson 6**: Complete AI-powered data analysis workflow
+- **SQL**: SQL querying and data extraction proficiency
+- **Pandas**: Comprehensive pandas operations and time series analysis
+- **ML**: Machine learning pipeline development and deployment
+- **NLP**: Advanced NLP applications and text analysis
+- **LangChain**: Complete AI-powered data analysis workflow
 
 ### **Project Milestones**
-- **Milestone 1**: Quality prediction model with pandas/ML pipeline (Lesson 4)
-- **Milestone 2**: NLP analysis of manufacturing documents (Lesson 5)
-- **Milestone 3**: Complete LangChain-powered analysis system (Lesson 6)
+- **Milestone 1**: Quality prediction model with pandas/ML pipeline (ML)
+- **Milestone 2**: NLP analysis of manufacturing documents (NLP)
+- **Milestone 3**: Complete LangChain-powered analysis system (LangChain)
 
 ---
 
