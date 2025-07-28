@@ -17,6 +17,22 @@ uv sync
 Below is layout of the repo:
 
 ├── src/
+│   ├── lessons/
+│   │   ├── phase1_llm_literacy/      # LLM Literacy & Responsible AI
+│   │   ├── phase2_development/        # Development Foundation
+│   │   ├── phase3_genai/             # GenAI Implementation
+│   │   ├── phase4_data_pipeline/     # Data Pipeline (SQL & Pandas)
+│   │   ├── phase5_text_patterns/     # Text & Patterns (NLP & ML)
+│   │   ├── phase6_advanced_ai/       # Advanced AI Systems
+│   │   └── phase7_stats/             # Statistics & Trust
+│   ├── database/
+│   │   ├── config/
+│   │   ├── db/
+│   │   ├── docs/
+│   │   ├── quick_start.py
+│   │   ├── README.md
+│   │   ├── scripts/
+│   │   └── tests/
 │   ├── platforms-tools/
 │   ├── languages-commands/
 │   ├── packages/
@@ -32,6 +48,40 @@ Below is layout of the repo:
 ├── .gitignore              # Git ignore file
 ├── LICENSE                 # License for the repo on Github
 └── README.md               # This file - your setup and overview guide
+
+## Curriculum Overview
+
+The curriculum is organized into 7 phases with 15 comprehensive lessons, using real-world manufacturing data to teach data science concepts:
+
+### **Phase 1: LLM Literacy & Responsible AI (Lessons 1-3)**
+- Understanding transformer architecture and attention mechanisms
+- Critical thinking with LLMs and bias awareness
+- Language as mathematics (vector spaces and embeddings)
+
+### **Phase 2: Development Foundation (Lessons 4-5)**
+- Terminal navigation and development environment setup
+- Python environment management with modern tools
+
+### **Phase 3: GenAI Implementation (Lessons 6-7)**
+- Building your first AI agent with LangChain
+- Connecting AI to structured data sources
+
+### **Phase 4: Data Pipeline (Lessons 8-9)**
+- SQL fundamentals for data extraction
+- Pandas for data cleaning and preprocessing
+
+### **Phase 5: Text & Patterns (Lessons 10-12)**
+- Natural language processing techniques
+- Pattern matching with regex
+- Machine learning for pattern recognition
+
+### **Phase 6: Advanced AI (Lessons 13-14)**
+- Retrieval-augmented generation (RAG) systems
+- Multi-agent workflows and complex AI systems
+
+### **Phase 7: Statistics & Trust (Lesson 15)**
+- Statistical inference and model validation
+- A/B testing and confidence intervals
 
 ## Overview of sections
 
