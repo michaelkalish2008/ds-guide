@@ -28,7 +28,7 @@ def sample_database():
 @pytest.fixture(scope="function")
 def temp_db():
     """Create database in a known writable location for each test"""
-    db_path = Path("src/database/data/test_database.db")
+    db_path = Path("db/test_database.db")
     if db_path.exists():
         print(f"[DEBUG] Pre-test: {db_path} exists. Permissions: {oct(db_path.stat().st_mode)}, Owner: {getpass.getuser()}")
         db_path.unlink()

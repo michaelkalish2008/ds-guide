@@ -3,7 +3,10 @@ import sqlite3
 from pathlib import Path
 import tempfile
 from datetime import datetime
-from src.database.generators.quality_generator import QualityGenerator
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '../../'))
+from scripts.generation.generators.quality_generator import QualityGenerator
 
 class TestQualityGenerator:
     @pytest.fixture
@@ -18,20 +21,11 @@ class TestQualityGenerator:
     def generator(self, temp_db):
         """Create generator instance with shared test database and load schema"""
         # Load schema first
-        schema_dir = Path(__file__).parent.parent.parent / "sqlite"
+        schema_dir = Path(__file__).parent.parent.parent / "scripts" / "schema" / "sqlite"
         schema_files = [
             "01_core_architecture.sqlite.sql",
-            "02_raw_materials_suppliers.sqlite.sql",
             "03_preprocessing_operations.sqlite.sql",
-            "04_manufacturing_process.sqlite.sql",
-            "05_aging_maturation.sqlite.sql",
-            "06_quality_control_testing.sqlite.sql",
-            "07_sensory_analysis.sqlite.sql",
-            "08_packaging_operations.sqlite.sql",
-            "09_labeling_regulatory.sqlite.sql",
-            "10_weighing_pricing_distribution.sqlite.sql",
-            "11_shipping_logistics.sqlite.sql",
-            "12_advanced_relationships_views.sqlite.sql"
+            "06_quality_control_testing.sqlite.sql"
         ]
         
         conn = sqlite3.connect(temp_db)

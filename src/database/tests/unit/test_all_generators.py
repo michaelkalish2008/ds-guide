@@ -4,18 +4,22 @@ from pathlib import Path
 import tempfile
 from datetime import datetime
 
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '../../'))
+
 # Import all generators
-from src.database.generators.core_generator import CoreDataGenerator
-from src.database.generators.raw_materials_generator import RawMaterialsGenerator
-from src.database.generators.preprocessing_generator import PreprocessingGenerator
-from src.database.generators.manufacturing_generator import ManufacturingGenerator
-from src.database.generators.aging_generator import AgingGenerator
-from src.database.generators.quality_generator import QualityGenerator
-from src.database.generators.sensory_generator import SensoryGenerator
-from src.database.generators.packaging_generator import PackagingGenerator
-from src.database.generators.labeling_generator import LabelingGenerator
-from src.database.generators.weighing_generator import WeighingGenerator
-from src.database.generators.shipping_generator import ShippingGenerator
+from scripts.generation.generators.core_generator import CoreDataGenerator
+from scripts.generation.generators.raw_materials_generator import RawMaterialsGenerator
+from scripts.generation.generators.preprocessing_generator import PreprocessingGenerator
+from scripts.generation.generators.manufacturing_generator import ManufacturingGenerator
+from scripts.generation.generators.aging_generator import AgingGenerator
+from scripts.generation.generators.quality_generator import QualityGenerator
+from scripts.generation.generators.sensory_generator import SensoryGenerator
+from scripts.generation.generators.packaging_generator import PackagingGenerator
+from scripts.generation.generators.labeling_generator import LabelingGenerator
+from scripts.generation.generators.weighing_generator import WeighingGenerator
+from scripts.generation.generators.shipping_generator import ShippingGenerator
 
 class TestAllGenerators:
     @pytest.fixture
@@ -63,7 +67,7 @@ class TestAllGenerators:
     def test_generator_data_population(self, temp_db):
         """Test that all generators can populate data"""
         # Load all schema files
-        schema_dir = Path(__file__).parent.parent.parent / "sqlite"
+        schema_dir = Path(__file__).parent.parent.parent / "scripts" / "schema" / "sqlite"
         schema_files = [
             "01_core_architecture.sqlite.sql",
             "02_raw_materials_suppliers.sqlite.sql",
@@ -119,7 +123,7 @@ class TestAllGenerators:
     def test_realistic_cheesemaking_progression(self, temp_db):
         """Test that data follows realistic cheesemaking progression"""
         # Load schema and generate data
-        schema_dir = Path(__file__).parent.parent.parent / "sqlite"
+        schema_dir = Path(__file__).parent.parent.parent / "scripts" / "schema" / "sqlite"
         schema_files = [
             "01_core_architecture.sqlite.sql",
             "02_raw_materials_suppliers.sqlite.sql",

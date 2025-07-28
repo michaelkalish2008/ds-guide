@@ -3,7 +3,7 @@ from pathlib import Path
 
 def test_sensory_schema():
     db_path = "/tmp/test_sensory_debug.db"
-    schema_file = Path("src/database/sqlite/07_sensory_analysis.sqlite.sql")
+    schema_file = Path("scripts/schema/sqlite/07_sensory_analysis.sqlite.sql")
     index_stmt = "CREATE INDEX idx_sensory_evaluations_lot ON sensory_evaluations (lot_uuid, evaluation_timestamp);"
     conn = sqlite3.connect(db_path)
     try:

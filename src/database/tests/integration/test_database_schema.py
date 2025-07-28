@@ -3,7 +3,10 @@ import pytest
 import sqlite3
 from pathlib import Path
 import tempfile
-from src.database.generate_synthetic_data import CheeseManufacturingDataGenerator
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '../../'))
+from scripts.generation.generate_synthetic_data import CheeseManufacturingDataGenerator
 
 class TestDatabaseSchema:
     @pytest.fixture

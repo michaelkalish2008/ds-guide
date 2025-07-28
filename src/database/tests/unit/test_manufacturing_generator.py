@@ -3,7 +3,10 @@ import sqlite3
 from pathlib import Path
 import tempfile
 from datetime import datetime
-from src.database.generators.manufacturing_generator import ManufacturingGenerator
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '../../'))
+from scripts.generation.generators.manufacturing_generator import ManufacturingGenerator
 
 class TestManufacturingGenerator:
     @pytest.fixture
@@ -12,13 +15,13 @@ class TestManufacturingGenerator:
         with tempfile.NamedTemporaryFile(suffix='.db', delete=False) as tmp:
             db_path = Path(tmp.name)
         # Load core schema
-        core_schema = Path(__file__).parent.parent.parent / "sqlite" / "01_core_architecture.sqlite.sql"
+        core_schema = Path(__file__).parent.parent.parent / "scripts" / "schema" / "sqlite" / "01_core_architecture.sqlite.sql"
         conn = sqlite3.connect(db_path)
         with open(core_schema, 'r') as f:
             conn.executescript(f.read())
         conn.close()
         # Load manufacturing process schema
-        manufacturing_schema = Path(__file__).parent.parent.parent / "sqlite" / "04_manufacturing_process.sqlite.sql"
+        manufacturing_schema = Path(__file__).parent.parent.parent / "scripts" / "schema" / "sqlite" / "04_manufacturing_process.sqlite.sql"
         conn = sqlite3.connect(db_path)
         with open(manufacturing_schema, 'r') as f:
             conn.executescript(f.read())

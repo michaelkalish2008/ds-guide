@@ -7,8 +7,8 @@ A comprehensive SQLite database system for simulating cheese manufacturing opera
 ### **Pre-Generated Databases Available**
 Two database files are included in this repository for immediate exploration:
 
-- **`cheese_manufacturing.db`** (45MB) - Complete 31-day production dataset
-- **`test.db`** (552KB) - Smaller test dataset for quick exploration
+- **`db/cheese_manufacturing.db`** (45MB) - Complete 31-day production dataset
+- **`db/test.db`** (552KB) - Smaller test dataset for quick exploration
 
 ### **Option 1: Use DB Browser for SQLite (Recommended)**
 ```bash
@@ -16,10 +16,10 @@ Two database files are included in this repository for immediate exploration:
 brew install --cask db-browser-for-sqlite
 
 # Open the main database
-open -a "DB Browser for SQLite" cheese_manufacturing.db
+open -a "DB Browser for SQLite" db/cheese_manufacturing.db
 
 # Or open the test database for quick exploration
-open -a "DB Browser for SQLite" test.db
+open -a "DB Browser for SQLite" db/test.db
 ```
 
 ### **Option 2: Use Python/SQLite**
@@ -28,10 +28,10 @@ import sqlite3
 import pandas as pd
 
 # Connect to the main database
-conn = sqlite3.connect("cheese_manufacturing.db")
+conn = sqlite3.connect("db/cheese_manufacturing.db")
 
 # Or connect to the test database
-# conn = sqlite3.connect("test.db")
+# conn = sqlite3.connect("db/test.db")
 
 # Explore tables
 cursor = conn.cursor()
@@ -53,10 +53,10 @@ conn.close()
 ### **Option 3: Command Line SQLite**
 ```bash
 # Open main database in SQLite CLI
-sqlite3 cheese_manufacturing.db
+sqlite3 db/cheese_manufacturing.db
 
 # Or open test database
-# sqlite3 test.db
+# sqlite3 db/test.db
 
 # List all tables
 .tables
@@ -69,12 +69,38 @@ SELECT lot_number, lot_date FROM lot_master LIMIT 5;
 ```
 
 ### **Database Contents**
-- **`cheese_manufacturing.db`**: 31 days of realistic Taleggio production data
-- **`test.db`**: Smaller dataset for testing and quick exploration
+- **`db/cheese_manufacturing.db`**: 31 days of realistic Taleggio production data
+- **`db/test.db`**: Smaller dataset for testing and quick exploration
 - **50+ tables** covering the complete manufacturing process
 - **Realistic relationships** between raw materials → manufacturing → aging → packaging → shipping
 - **Quality control data** with test results and specifications
 - **Environmental monitoring** with temperature and humidity readings
+
+## 📁 Directory Structure
+
+```
+src/database/
+├── db/                          # Clean database access
+│   ├── cheese_manufacturing.db  # Main database file
+│   ├── test.db                  # Test database
+│   └── README.md               # Database usage guide
+├── scripts/                     # Development and maintenance scripts
+│   ├── generation/              # Data generation scripts
+│   │   ├── generate_synthetic_data.py
+│   │   └── generators/          # Generator modules
+│   ├── schema/                  # Database schema files
+│   │   └── sqlite/             # SQL schema files
+│   ├── testing/                 # Test files
+│   │   └── tests/              # Test modules
+│   └── utils/                   # Utility scripts
+│       └── check_table_counts.py
+├── docs/                        # Documentation
+│   └── guides/                  # Database guides
+└── config/                      # Configuration files
+    ├── config.yaml
+    ├── requirements.txt
+    └── pytest.ini
+```
 
 ## Overview
 

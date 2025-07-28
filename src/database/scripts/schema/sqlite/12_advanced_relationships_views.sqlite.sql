@@ -44,13 +44,14 @@ LEFT JOIN shipment_contents sc ON ip.package_uuid = sc.package_uuid
 LEFT JOIN shipments s ON sc.shipment_id = s.shipment_id;
 
 -- Batch genealogy for complex parent-child relationships
-CREATE TABLE batch_genealogy (
-    genealogy_id TEXT PRIMARY KEY,
-    parent_lot_uuid TEXT,
-    child_lot_uuid TEXT REFERENCES lot_master(lot_uuid),
-    quantity_contribution_kg REAL,
-    contribution_percentage REAL,
-    relationship_type TEXT, -- 'INGREDIENT', 'REWORK', 'BLEND', 'SPLIT'
-    created_timestamp TEXT DEFAULT (datetime('now')),
-    UNIQUE(parent_lot_uuid, child_lot_uuid)
-);
+-- Note: This table is already defined in 01_core_architecture.sqlite.sql
+-- CREATE TABLE batch_genealogy (
+--     genealogy_id TEXT PRIMARY KEY,
+--     parent_lot_uuid TEXT,
+--     child_lot_uuid TEXT REFERENCES lot_master(lot_uuid),
+--     quantity_contribution_kg REAL,
+--     contribution_percentage REAL,
+--     relationship_type TEXT, -- 'INGREDIENT', 'REWORK', 'BLEND', 'SPLIT'
+--     created_timestamp TEXT DEFAULT (datetime('now')),
+--     UNIQUE(parent_lot_uuid, child_lot_uuid)
+-- );

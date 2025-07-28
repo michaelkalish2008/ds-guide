@@ -2,9 +2,9 @@
 # Cheese Manufacturing Database - Taleggio Production
 
 database:
-  path: "cheese_manufacturing.db"
+  path: "db/cheese_manufacturing.db"
   backup_before_generation: true
-  backup_path: "data/backups/"
+  backup_path: "db/backups/"
 
 generation:
   # Time and Scale Parameters

@@ -17,7 +17,20 @@ CREATE TABLE IF NOT EXISTS lot_master (
     updated_at TEXT DEFAULT (datetime('now'))
 );
 
+-- Batch genealogy tracking
+CREATE TABLE IF NOT EXISTS batch_genealogy (
+    genealogy_id TEXT PRIMARY KEY,
+    parent_lot_uuid TEXT,
+    child_lot_uuid TEXT,
+    quantity_contribution_kg REAL,
+    contribution_percentage REAL,
+    relationship_type TEXT,
+    created_timestamp TEXT DEFAULT (datetime('now'))
+);
+
 -- Create indexes for optimal query performance
 CREATE INDEX idx_lot_date_uuid ON lot_master (lot_date, lot_uuid);
 CREATE INDEX idx_lot_number ON lot_master (lot_number);
-CREATE INDEX idx_product_code ON lot_master (product_code, lot_date); 
+CREATE INDEX idx_product_code ON lot_master (product_code, lot_date);
+CREATE INDEX idx_batch_genealogy_parent ON batch_genealogy (parent_lot_uuid);
+CREATE INDEX idx_batch_genealogy_child ON batch_genealogy (child_lot_uuid); 

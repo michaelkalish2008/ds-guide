@@ -7,17 +7,17 @@ import time
 from datetime import datetime, timedelta
 
 # Use relative imports for direct script execution
-from generators.core_generator import CoreDataGenerator
-from generators.raw_materials_generator import RawMaterialsGenerator
-from generators.preprocessing_generator import PreprocessingGenerator
-from generators.manufacturing_generator import ManufacturingGenerator
-from generators.aging_generator import AgingGenerator
-from generators.quality_generator import QualityGenerator
-from generators.sensory_generator import SensoryGenerator
-from generators.packaging_generator import PackagingGenerator
-from generators.labeling_generator import LabelingGenerator
-from generators.weighing_generator import WeighingGenerator
-from generators.shipping_generator import ShippingGenerator
+from .generators.core_generator import CoreDataGenerator
+from .generators.raw_materials_generator import RawMaterialsGenerator
+from .generators.preprocessing_generator import PreprocessingGenerator
+from .generators.manufacturing_generator import ManufacturingGenerator
+from .generators.aging_generator import AgingGenerator
+from .generators.quality_generator import QualityGenerator
+from .generators.sensory_generator import SensoryGenerator
+from .generators.packaging_generator import PackagingGenerator
+from .generators.labeling_generator import LabelingGenerator
+from .generators.weighing_generator import WeighingGenerator
+from .generators.shipping_generator import ShippingGenerator
 
 # Configure logging
 logging.basicConfig(
@@ -31,7 +31,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class CheeseManufacturingDataGenerator:
-    def __init__(self, db_path="cheese_manufacturing.db"):
+    def __init__(self, db_path="db/cheese_manufacturing.db"):
         logger.info(f"Initializing CheeseManufacturingDataGenerator with db_path: {db_path}")
         self.db_path = Path(db_path)
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
@@ -63,22 +63,18 @@ class CheeseManufacturingDataGenerator:
         # Use multiple path resolution strategies
         current_dir = Path.cwd()
         
-        # Strategy 1: Try relative to current directory
-        schema_dir = current_dir / "sqlite"
+        # Strategy 1: Try relative to script location
+        script_dir = Path(__file__).parent
+        schema_dir = script_dir / "schema" / "sqlite"
         
-        # Strategy 2: Try relative to script location
+        # Strategy 2: Try from project root
         if not schema_dir.exists():
-            script_dir = Path(__file__).parent
-            schema_dir = script_dir / "sqlite"
+            schema_dir = current_dir.parent.parent / "src" / "database" / "scripts" / "schema" / "sqlite"
         
-        # Strategy 3: Try from project root
-        if not schema_dir.exists():
-            schema_dir = current_dir.parent.parent / "src" / "database" / "sqlite"
-        
-        # Strategy 4: Try absolute path from project root
+        # Strategy 3: Try absolute path from project root
         if not schema_dir.exists():
             project_root = Path(__file__).parent.parent.parent.parent
-            schema_dir = project_root / "src" / "database" / "sqlite"
+            schema_dir = project_root / "src" / "database" / "scripts" / "schema" / "sqlite"
         
         logger.debug(f"Looking for schema files in: {schema_dir}")
         logger.debug(f"Schema directory exists: {schema_dir.exists()}")

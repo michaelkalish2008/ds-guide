@@ -4,7 +4,7 @@ import os
 
 def check_table_counts():
     # Check if database exists
-    db_path = 'cheese_manufacturing.db'
+    db_path = 'db/cheese_manufacturing.db'
     if not os.path.exists(db_path):
         print('Database not found. Please run generate_synthetic_data.py first.')
         return

@@ -5,7 +5,9 @@ The Data Science (DS) Guide is here to help you learn and apply DS concepts and 
 
 1. We'll kick off with creating a virtual environment (alias venv) for installing all of the packages we'll need. We'll be running the following command to install the packages listed in requirements.txt
 ```bash
-# pip install -r requirements.txt
+uv init
+uv add -r requirements.txt
+uv sync
 ```
 2. The .env file is our "hidden" file containing our API keys. These are to be kept secret and not stored in Github. Go to OpenAI, LangSmith, Supabase, etc. to get your keys!
 3. Configurations and settings apply generally to the repo and so will be stored in config.yaml and settings.py.
@@ -27,8 +29,8 @@ Below is layout of the repo:
 ├── requirements.txt         # Python dependencies
 ├── .env                     # Environment variables and secrets
 ├── config.yaml              # Configuration settings
-├── settings.py              # Python settings and constants
 ├── .gitignore              # Git ignore file
+├── LICENSE                 # License for the repo on Github
 └── README.md               # This file - your setup and overview guide
 
 ## Overview of sections

@@ -4,9 +4,13 @@ import sqlite3
 from pathlib import Path
 import tempfile
 from datetime import datetime
-from src.database.generators.core_generator import CoreDataGenerator
-from src.database.generators.manufacturing_generator import ManufacturingGenerator
-from src.database.generators.quality_generator import QualityGenerator
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '../../'))
+
+from scripts.generation.generators.core_generator import CoreDataGenerator
+from scripts.generation.generators.manufacturing_generator import ManufacturingGenerator
+from scripts.generation.generators.quality_generator import QualityGenerator
 
 class TestDataGenerators:
     @pytest.fixture
@@ -41,7 +45,7 @@ class TestDataGenerators:
     def test_generator_data_population(self, temp_db):
         """Test that generators can populate data"""
         # Load schema first
-        schema_dir = Path(__file__).parent.parent.parent / "sqlite"
+        schema_dir = Path(__file__).parent.parent.parent / "scripts" / "schema" / "sqlite"
         schema_files = [
             "01_core_architecture.sqlite.sql",
             "02_raw_materials_suppliers.sqlite.sql",

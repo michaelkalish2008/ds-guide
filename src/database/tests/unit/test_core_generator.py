@@ -3,7 +3,10 @@ import sqlite3
 from pathlib import Path
 import tempfile
 from datetime import datetime
-from src.database.generators.core_generator import CoreDataGenerator
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '../../'))
+from scripts.generation.generators.core_generator import CoreDataGenerator
 
 class TestCoreGenerator:
     @pytest.fixture
@@ -18,28 +21,22 @@ class TestCoreGenerator:
     def generator(self, temp_db):
         """Create generator instance with temp database and load schema"""
         # Load schema first
-        schema_dir = Path(__file__).parent.parent.parent / "sqlite"
+        schema_dir = Path(__file__).parent.parent.parent / "scripts" / "schema" / "sqlite"
+        
+        conn = sqlite3.connect(temp_db)
+        
+        # Load all necessary schema files
         schema_files = [
             "01_core_architecture.sqlite.sql",
-            "02_raw_materials_suppliers.sqlite.sql",
-            "03_preprocessing_operations.sqlite.sql",
-            "04_manufacturing_process.sqlite.sql",
-            "05_aging_maturation.sqlite.sql",
-            "06_quality_control_testing.sqlite.sql",
-            "07_sensory_analysis.sqlite.sql",
-            "08_packaging_operations.sqlite.sql",
-            "09_labeling_regulatory.sqlite.sql",
-            "10_weighing_pricing_distribution.sqlite.sql",
-            "11_shipping_logistics.sqlite.sql",
             "12_advanced_relationships_views.sqlite.sql"
         ]
         
-        conn = sqlite3.connect(temp_db)
         for schema_file in schema_files:
             schema_path = schema_dir / schema_file
             if schema_path.exists():
                 with open(schema_path, 'r') as f:
                     conn.executescript(f.read())
+        
         conn.commit()
         conn.close()
         
