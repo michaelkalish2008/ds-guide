@@ -73,6 +73,9 @@ data/database/backups/
 data/database/*.sqlite
 data/database/*.sqlite3
 
+# Reference directory
+_reference/
+
 # Exception: Allow the demo databases
 !cheese_manufacturing.db
 !test.db
