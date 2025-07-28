@@ -2,6 +2,80 @@
 
 A comprehensive SQLite database system for simulating cheese manufacturing operations with synthetic data generation. This database accurately models the complete Taleggio cheese production process with realistic data relationships and chronological progression.
 
+## 🚀 Quick Database Access
+
+### **Pre-Generated Databases Available**
+Two database files are included in this repository for immediate exploration:
+
+- **`cheese_manufacturing.db`** (45MB) - Complete 31-day production dataset
+- **`test.db`** (552KB) - Smaller test dataset for quick exploration
+
+### **Option 1: Use DB Browser for SQLite (Recommended)**
+```bash
+# Install DB Browser for SQLite
+brew install --cask db-browser-for-sqlite
+
+# Open the main database
+open -a "DB Browser for SQLite" cheese_manufacturing.db
+
+# Or open the test database for quick exploration
+open -a "DB Browser for SQLite" test.db
+```
+
+### **Option 2: Use Python/SQLite**
+```python
+import sqlite3
+import pandas as pd
+
+# Connect to the main database
+conn = sqlite3.connect("cheese_manufacturing.db")
+
+# Or connect to the test database
+# conn = sqlite3.connect("test.db")
+
+# Explore tables
+cursor = conn.cursor()
+cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
+tables = cursor.fetchall()
+print("Available tables:", [table[0] for table in tables])
+
+# Query example data
+df = pd.read_sql_query("""
+    SELECT lot_number, lot_date, batch_size_kg 
+    FROM lot_master 
+    LIMIT 5
+""", conn)
+print(df)
+
+conn.close()
+```
+
+### **Option 3: Command Line SQLite**
+```bash
+# Open main database in SQLite CLI
+sqlite3 cheese_manufacturing.db
+
+# Or open test database
+# sqlite3 test.db
+
+# List all tables
+.tables
+
+# Show sample data
+SELECT lot_number, lot_date FROM lot_master LIMIT 5;
+
+# Exit
+.quit
+```
+
+### **Database Contents**
+- **`cheese_manufacturing.db`**: 31 days of realistic Taleggio production data
+- **`test.db`**: Smaller dataset for testing and quick exploration
+- **50+ tables** covering the complete manufacturing process
+- **Realistic relationships** between raw materials → manufacturing → aging → packaging → shipping
+- **Quality control data** with test results and specifications
+- **Environmental monitoring** with temperature and humidity readings
+
 ## Overview
 
 This module provides:
