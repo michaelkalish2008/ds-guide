@@ -22,27 +22,57 @@ class TestDataGenerators:
         generator = CoreDataGenerator(temp_db)
         assert generator.db_path == temp_db
         assert generator.conn is not None
+        generator.close()
     
     def test_manufacturing_generator_initialization(self, temp_db):
         """Test manufacturing generator initialization"""
         generator = ManufacturingGenerator(temp_db)
         assert generator.db_path == temp_db
         assert generator.conn is not None
+        generator.close()
     
     def test_quality_generator_initialization(self, temp_db):
         """Test quality generator initialization"""
         generator = QualityGenerator(temp_db)
         assert generator.db_path == temp_db
         assert generator.conn is not None
+        generator.close()
     
     def test_generator_data_population(self, temp_db):
         """Test that generators can populate data"""
+        # Load schema first
+        schema_dir = Path(__file__).parent.parent.parent / "sqlite"
+        schema_files = [
+            "01_core_architecture.sqlite.sql",
+            "02_raw_materials_suppliers.sqlite.sql",
+            "03_preprocessing_operations.sqlite.sql",
+            "04_manufacturing_process.sqlite.sql",
+            "05_aging_maturation.sqlite.sql",
+            "06_quality_control_testing.sqlite.sql",
+            "07_sensory_analysis.sqlite.sql",
+            "08_packaging_operations.sqlite.sql",
+            "09_labeling_regulatory.sqlite.sql",
+            "10_weighing_pricing_distribution.sqlite.sql",
+            "11_shipping_logistics.sqlite.sql",
+            "12_advanced_relationships_views.sqlite.sql"
+        ]
+        
+        conn = sqlite3.connect(temp_db)
+        for schema_file in schema_files:
+            schema_path = schema_dir / schema_file
+            if schema_path.exists():
+                with open(schema_path, 'r') as f:
+                    conn.executescript(f.read())
+        conn.commit()
+        conn.close()
+        
         test_date = datetime(2024, 1, 15)
         lot_count = 1
         
         # Test core generator
         core_gen = CoreDataGenerator(temp_db)
         core_gen.populate_data(test_date, lot_count)
+        core_gen.close()
         
         conn = sqlite3.connect(temp_db)
         cursor = conn.cursor()
@@ -60,4 +90,6 @@ class TestDataGenerators:
         try:
             generator.populate_data("invalid_date", 1)
         except Exception:
-            pass  # Expected to fail gracefully 
+            pass  # Expected to fail gracefully
+        
+        generator.close() 

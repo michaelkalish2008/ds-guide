@@ -33,6 +33,9 @@ class SensoryGenerator:
         
     def populate_data(self, current_date, lot_count):
         """Generate sensory evaluation data"""
+        self._populate_sensory_panels()
+        self._populate_panelist_qualifications()
+        self._populate_sensory_attributes()
         self._populate_sensory_evaluations(current_date, lot_count)
         
     def _populate_sensory_evaluations(self, current_date, lot_count):
@@ -131,6 +134,81 @@ class SensoryGenerator:
         ))
         
         self.conn.commit()
+
+    def _populate_sensory_panels(self):
+        """Populate sensory panels table"""
+        cursor = self.conn.cursor()
+        
+        panels = [
+            ("PANEL001", "Primary Quality Panel", "DAILY", "ACTIVE", "Core quality evaluation team"),
+            ("PANEL002", "Expert Tasting Panel", "WEEKLY", "ACTIVE", "Expert cheese tasters"),
+            ("PANEL003", "Development Panel", "MONTHLY", "ACTIVE", "Product development team"),
+            ("PANEL004", "Regulatory Panel", "QUARTERLY", "ACTIVE", "Regulatory compliance team"),
+            ("PANEL005", "Customer Panel", "MONTHLY", "INACTIVE", "Customer feedback panel")
+        ]
+        
+        for panel_id, panel_name, frequency, status, description in panels:
+            cursor.execute("""
+                INSERT OR IGNORE INTO sensory_panels 
+                (panel_id, panel_name, panel_type, created_at, updated_at)
+                VALUES (?, ?, ?, ?, ?)
+            """, (panel_id, panel_name, frequency, "2024-01-01", "2024-01-01"))
+        
+        print(f"  ✅ Generated {len(panels)} sensory panels")
+
+    def _populate_panelist_qualifications(self):
+        """Populate panelist qualifications table"""
+        cursor = self.conn.cursor()
+        
+        qualifications = [
+            ("EVAL001", "PANEL001", "CERTIFIED", "2020-01-15", "2025-01-15", "Primary quality evaluator"),
+            ("EVAL002", "PANEL001", "CERTIFIED", "2019-03-20", "2024-03-20", "Senior quality specialist"),
+            ("EVAL003", "PANEL002", "EXPERT", "2018-06-10", "2026-06-10", "Expert cheese taster"),
+            ("EVAL004", "PANEL002", "EXPERT", "2017-09-05", "2025-09-05", "Master cheese evaluator"),
+            ("EVAL005", "PANEL003", "TRAINED", "2021-02-28", "2024-02-28", "Development specialist"),
+            ("EVAL006", "PANEL004", "CERTIFIED", "2020-11-12", "2025-11-12", "Regulatory specialist"),
+            ("EVAL007", "PANEL001", "TRAINED", "2022-04-18", "2024-04-18", "Quality technician"),
+            ("EVAL008", "PANEL002", "EXPERT", "2016-12-03", "2026-12-03", "Senior expert evaluator")
+        ]
+        
+        for panelist_id, panel_id, qualification_level, certification_date, expiry_date, notes in qualifications:
+            cursor.execute("""
+                INSERT OR IGNORE INTO panelist_qualifications 
+                (panelist_id, panelist_name, certification_level, specialization,
+                 last_calibration_date, active_status, sensory_acuity_scores)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            """, (panelist_id, f"Panelist {panelist_id}", qualification_level, "Cheese Evaluation",
+                  certification_date, 1, '{"aroma": 8.5, "taste": 9.0, "texture": 8.0}'))
+        
+        print(f"  ✅ Generated {len(qualifications)} panelist qualifications")
+
+    def _populate_sensory_attributes(self):
+        """Populate sensory attributes table"""
+        cursor = self.conn.cursor()
+        
+        attributes = [
+            ("AROMA_INTENSITY", "Aroma Intensity", "OLFACTORY", "1-10 scale", "Intensity of cheese aroma"),
+            ("FLAVOR_INTENSITY", "Flavor Intensity", "TASTE", "1-10 scale", "Intensity of cheese flavor"),
+            ("TEXTURE_FIRMNESS", "Texture Firmness", "TACTILE", "1-10 scale", "Firmness of cheese texture"),
+            ("MOUTHFEEL", "Mouthfeel", "TACTILE", "1-10 scale", "Smoothness and creaminess"),
+            ("SALTINESS", "Saltiness", "TASTE", "1-10 scale", "Salt perception"),
+            ("ACIDITY", "Acidity", "TASTE", "1-10 scale", "Acidic taste perception"),
+            ("BITTERNESS", "Bitterness", "TASTE", "1-10 scale", "Bitter taste perception"),
+            ("UMAMI", "Umami", "TASTE", "1-10 scale", "Savory taste perception"),
+            ("CREAMINESS", "Creaminess", "TACTILE", "1-10 scale", "Creamy texture perception"),
+            ("PUNGENCY", "Pungency", "OLFACTORY", "1-10 scale", "Sharp or strong aroma")
+        ]
+        
+        for attribute_id, attribute_name, attribute_category, measurement_scale, description in attributes:
+            cursor.execute("""
+                INSERT OR IGNORE INTO sensory_attributes 
+                (attribute_id, evaluation_id, attribute_category, attribute_name,
+                 intensity_score, quality_score, descriptor_notes, defect_flag, benchmark_comparison)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (attribute_id, str(uuid.uuid4()), attribute_category, attribute_name,
+                  random.randint(5, 9), random.randint(6, 10), description, 0, "Standard"))
+        
+        print(f"  ✅ Generated {len(attributes)} sensory attributes")
         
     def _generate_evaluation_notes(self):
         """Generate realistic evaluation notes for Taleggio"""

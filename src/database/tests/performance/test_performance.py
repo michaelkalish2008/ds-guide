@@ -61,10 +61,14 @@ class TestPerformance:
         start_time = time.time()
         cursor.execute("""
             SELECT l.lot_number, COUNT(m.batch_uuid) as batch_count,
-                   AVG(q.ph_level) as avg_ph
+                   AVG(CAST(q.actual_result AS REAL)) as avg_result
             FROM lot_master l
             LEFT JOIN manufacturing_batches m ON l.lot_uuid = m.lot_uuid
             LEFT JOIN quality_tests q ON l.lot_uuid = q.lot_uuid
+            WHERE q.actual_result IS NOT NULL 
+            AND q.actual_result != 'PASS' 
+            AND q.actual_result != 'FAIL'
+            AND q.actual_result != ''
             GROUP BY l.lot_uuid
             ORDER BY l.lot_date
         """)

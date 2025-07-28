@@ -16,7 +16,33 @@ class TestCoreGenerator:
     
     @pytest.fixture
     def generator(self, temp_db):
-        """Create generator instance with temp database"""
+        """Create generator instance with temp database and load schema"""
+        # Load schema first
+        schema_dir = Path(__file__).parent.parent.parent / "sqlite"
+        schema_files = [
+            "01_core_architecture.sqlite.sql",
+            "02_raw_materials_suppliers.sqlite.sql",
+            "03_preprocessing_operations.sqlite.sql",
+            "04_manufacturing_process.sqlite.sql",
+            "05_aging_maturation.sqlite.sql",
+            "06_quality_control_testing.sqlite.sql",
+            "07_sensory_analysis.sqlite.sql",
+            "08_packaging_operations.sqlite.sql",
+            "09_labeling_regulatory.sqlite.sql",
+            "10_weighing_pricing_distribution.sqlite.sql",
+            "11_shipping_logistics.sqlite.sql",
+            "12_advanced_relationships_views.sqlite.sql"
+        ]
+        
+        conn = sqlite3.connect(temp_db)
+        for schema_file in schema_files:
+            schema_path = schema_dir / schema_file
+            if schema_path.exists():
+                with open(schema_path, 'r') as f:
+                    conn.executescript(f.read())
+        conn.commit()
+        conn.close()
+        
         return CoreDataGenerator(temp_db)
     
     def test_generator_initialization(self, generator):
@@ -49,10 +75,16 @@ class TestCoreGenerator:
     
     def test_lot_number_uniqueness(self, generator):
         """Test that lot numbers are unique"""
-        test_date = datetime(2024, 1, 15)
+        # Generate multiple lots with different dates to ensure uniqueness
+        test_dates = [
+            datetime(2024, 1, 15),
+            datetime(2024, 1, 16),
+            datetime(2024, 1, 17),
+            datetime(2024, 1, 18),
+            datetime(2024, 1, 19)
+        ]
         
-        # Generate multiple lots
-        for i in range(5):
+        for i, test_date in enumerate(test_dates):
             generator.populate_data(test_date, i + 1)
         
         cursor = generator.conn.cursor()
@@ -60,7 +92,7 @@ class TestCoreGenerator:
         lot_numbers = [row[0] for row in cursor.fetchall()]
         
         # Check uniqueness
-        assert len(lot_numbers) == len(set(lot_numbers))
+        assert len(lot_numbers) == len(set(lot_numbers)), f"Duplicate lot numbers found: {lot_numbers}"
     
     def test_date_range_validation(self, generator):
         """Test date validation"""

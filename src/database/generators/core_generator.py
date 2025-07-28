@@ -66,6 +66,30 @@ class CoreDataGenerator:
         
         self.conn.commit()
         print(f"Generated lot record for {lot_number}")
+        
+        # Populate batch genealogy
+        self._populate_batch_genealogy(lot_uuid, lot_number)
+
+    def _populate_batch_genealogy(self, lot_uuid, lot_number):
+        """Populate batch genealogy table"""
+        cursor = self.conn.cursor()
+        
+        genealogy_id = str(uuid.uuid4())
+        parent_lot = f"PARENT-{lot_number}" if random.random() < 0.3 else None
+        child_lots = [f"CHILD-{lot_number}-{i}" for i in range(1, random.randint(2, 5))] if random.random() < 0.4 else []
+        
+        cursor.execute("""
+            INSERT OR IGNORE INTO batch_genealogy 
+            (genealogy_id, parent_lot_uuid, child_lot_uuid, quantity_contribution_kg,
+             contribution_percentage, relationship_type, created_timestamp)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """, (
+            genealogy_id, parent_lot, lot_uuid, random.uniform(10, 50),
+            random.uniform(20, 100), "INGREDIENT" if parent_lot else "NEW_BATCH",
+            "2024-01-15 10:00:00"
+        ))
+        
+        print(f"  ✅ Generated batch genealogy for {lot_number}")
     
     def close(self):
         """Close database connection"""

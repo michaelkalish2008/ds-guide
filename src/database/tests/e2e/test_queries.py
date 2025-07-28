@@ -55,17 +55,20 @@ class TestQueries:
         process_analysis = cursor.fetchall()
         assert len(process_analysis) > 0, "Should have manufacturing process data"
         
-        # Test quality metrics
+        # Test quality metrics - use actual_result instead of ph_level
         cursor.execute("""
-            SELECT AVG(ph_level) as avg_ph,
-                   MIN(ph_level) as min_ph,
-                   MAX(ph_level) as max_ph
+            SELECT AVG(CAST(actual_result AS REAL)) as avg_result,
+                   MIN(CAST(actual_result AS REAL)) as min_result,
+                   MAX(CAST(actual_result AS REAL)) as max_result
             FROM quality_tests
-            WHERE ph_level IS NOT NULL
+            WHERE actual_result IS NOT NULL 
+            AND actual_result != 'PASS' 
+            AND actual_result != 'FAIL'
+            AND actual_result != ''
         """)
         
         quality_metrics = cursor.fetchone()
-        assert quality_metrics[0] is not None, "Should have average pH data"
+        assert quality_metrics[0] is not None, "Should have average quality test data"
         
         conn.close()
     
