@@ -1,0 +1,84 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+.env/
+
+# VS Code settings
+.vscode/
+
+# MacOS system files
+.DS_Store
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
+__pypackages__/
+
+# Test, coverage, and profiling
+.coverage
+.tox/
+.nox/
+.cache/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# Logs
+*.log
+
+# Local config files
+*.env
+*.local
+
+# Data files
+*.sqlite3
+*.db
+*.h5
+*.hdf5
+*.parquet
+*.feather
+*.csv
+*.tsv
+
+# Database files
+data/database/*.db
+data/database/backups/
+data/database/*.sqlite
+data/database/*.sqlite3
+
+# Reference directory
+_reference/
+
+# Exception: Allow the demo databases
+!cheese_manufacturing.db
+!test.db
+
+# Keep the directory structure
+!data/database/.gitkeep
