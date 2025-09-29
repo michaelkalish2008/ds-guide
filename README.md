@@ -1,5 +1,14 @@
 # ds-guide
-The Data Science (DS) Guide is here to help you learn and apply DS concepts and tools. If you are using Cursor, you can ask questions in your side bar (use **command l** shortcut).
+The Data Science (DS) Guide is here to help you learn and apply DS concepts and tools using standard datasets like penguins, cars, tips, and flights. If you are using Cursor, you can ask questions in your side bar (use **command l** shortcut).
+
+## Datasets Used
+This guide uses popular standard datasets that are perfect for learning data science:
+- **Penguins** - Species data with measurements (seaborn.load_dataset("penguins"))
+- **Cars** - Automotive specifications and performance data
+- **Tips** - Restaurant tips and billing data
+- **Flights** - Flight delay and performance data
+
+These datasets provide real-world complexity while being well-documented and widely used in the data science community.
 
 ## Structure
 
@@ -12,35 +21,22 @@ uv sync
 2. The .env file is our "hidden" file containing our API keys. These are to be kept secret and not stored in Github. Go to OpenAI, LangSmith, Supabase, etc. to get your keys!
 3. Configurations and settings apply generally to the repo and so will be stored in config.yaml and settings.py.
 4. .gitignore (another "hidden" file) ensures that certain files are not uploaded to Github.
-5. This repo follows the convention of locating code in a source (src) directory.
+5. The lessons are organized in phases to progressively build data science skills.
 
 Below is layout of the repo:
 
-├── src/
-│   ├── lessons/
-│   │   ├── phase1_llm_literacy/      # LLM Literacy & Responsible AI
-│   │   ├── phase2_development/        # Development Foundation
-│   │   ├── phase3_genai/             # GenAI Implementation
-│   │   ├── phase4_data_pipeline/     # Data Pipeline (SQL & Pandas)
-│   │   ├── phase5_text_patterns/     # Text & Patterns (NLP & ML)
-│   │   ├── phase6_advanced_ai/       # Advanced AI Systems
-│   │   └── phase7_stats/             # Statistics & Trust
-│   ├── database/
-│   │   ├── config/
-│   │   ├── db/
-│   │   ├── docs/
-│   │   ├── quick_start.py
-│   │   ├── README.md
-│   │   ├── scripts/
-│   │   └── tests/
-│   ├── platforms-tools/
-│   ├── languages-commands/
-│   ├── packages/
-│   ├── file-types/
-│   ├── statistics/
-│   ├── genai-nlp/
-│   ├── machine-learning/
-│   └── graphs/
+├── phase1_literacy/              # LLM Literacy & Critical Thinking
+├── phase2_setup/                 # Development Environment Setup
+├── phase3_languages/             # Programming Languages & Commands
+├── phase4_data_analysis/         # Data Analysis (SQL & Pandas)
+├── phase5_genai/                 # GenAI Implementation
+├── phase6_nlp/                   # NLP & Text Processing
+├── phase7_advanced_genai/        # Advanced GenAI Systems
+├── phase8_stats/                 # Statistics & Hypothesis Testing
+├── phase9_machine_learning/      # Machine Learning
+├── phase10_testing/              # Testing & Validation
+├── MASTER_CURRICULUM_OUTLINE.md  # Complete curriculum overview
+├── utils.py                      # Utility functions
 ├── venv/                    # Virtual environment (created during setup)
 ├── requirements.txt         # Python dependencies
 ├── .env                     # Environment variables and secrets
