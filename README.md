@@ -14,6 +14,54 @@ We'll explore data science using these interesting datasets:
 
 Don't worry if this sounds complex - we'll start simple and build up your skills step by step!
 
+## Machine Learning Fundamentals 🤖
+
+Want to understand how neural networks and deep learning really work? We've created a comprehensive series of notebooks that build your ML knowledge from the ground up:
+
+### 📚 The Complete ML Series
+
+1. **[Math Foundations](fundamentals/01_math_foundations.ipynb)** - Linear algebra, calculus, and probability essentials
+   - Vectors, matrices, and operations
+   - Derivatives and the chain rule
+   - Softmax and probability distributions
+
+2. **[Neural Network Basics](fundamentals/02_neural_network_basics.ipynb)** - Understanding the building blocks
+   - Perceptrons and neurons
+   - Activation functions (ReLU, sigmoid, tanh)
+   - Forward propagation
+   - Loss functions
+
+3. **[Feedforward Networks](fundamentals/03_feedforward_networks.ipynb)** - Building complete networks
+   - From scratch in NumPy
+   - Modern implementation in PyTorch
+   - Training on real datasets
+
+4. **[Backpropagation](fundamentals/04_backpropagation.ipynb)** - The heart of deep learning
+   - Computational graphs
+   - Chain rule in action
+   - Complete implementation with gradient checking
+   - PyTorch autograd
+
+5. **[Optimization](fundamentals/05_optimization.ipynb)** - Training neural networks effectively
+   - Gradient descent variants
+   - Momentum and Adam
+   - Learning rate schedules
+   - Regularization techniques
+
+6. **[Attention Mechanisms](fundamentals/06_attention_mechanism.ipynb)** - Foundation of modern AI
+   - Query, Key, Value paradigm
+   - Scaled dot-product attention
+   - Multi-head attention
+   - Self-attention and transformers
+
+**🎯 Each notebook includes:**
+- Clear explanations with math
+- Working code (NumPy + PyTorch)
+- Visualizations
+- Practice exercises
+
+**💡 Perfect for:** Anyone who wants to truly understand how ChatGPT, GPT-4, and other modern AI systems work under the hood!
+
 ## Quick Start (5 minutes) ⚡
 
 **Already have Python?** Jump right in:
